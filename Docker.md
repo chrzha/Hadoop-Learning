@@ -69,3 +69,16 @@ docker cp 宿主机中要拷贝的文件名及其路径 容器名：要拷贝到
 # NOTE: dump文件需要copy到新的container中
 ```
 
+## 使用外部config及挂载外部data目录
+```bash
+docker run -d --privileged=true -p 0.0.0.0:6379:6379 -v /docker/redis/redis.conf:/etc/redis/redis.conf -v /docker/redis/data:/data --name local_redis redis_121201 redis-server /etc/redis/redis.conf --appendonly yes
+```
+Note: 上面启动redis之后，redis无法通过客户端连接
+```bash
+[root@localhost data]# ps -ef |grep redis
+polkitd   8119  8097  0 10:37 ?        00:00:00 redis-server 127.0.0.1:6379
+root      8274 21198  0 10:46 pts/0    00:00:00 grep --color=auto redis
+# 只允许127.0.0.1 连接
+# Fix: redis.config文件中修改为 bind 0.0.0.0
+```
+
