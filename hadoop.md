@@ -237,8 +237,9 @@ hive-site.xml
 </property>
 </configuration>
 ```
-hive-en.sh
+hive-env.sh
 ```bash
+HADOOP_HOME=/var/cdh/hadoop-2.6.0-cdh5.9.3
 export HIVE_CONF_DIR=/var/cdh/hive-1.1.0-cdh5.9.3/conf
 ```
 
@@ -250,6 +251,7 @@ Put rdbms driver lib to lib folder, like postgres-42.2.8.jar
 ## sqoop
 reference:   
 [Install](https://www.jianshu.com/p/a088713ba26b)
+[Bilibili Video](https://www.bilibili.com/video/av53443775)
 
 sqoop-env.sh 
 ```bash
